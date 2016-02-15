@@ -35,7 +35,7 @@ class CSVAdapter implements StorageInterface
 
         while ($iterator->valid()) {
             $p = $iterator->current();
-            fputcsv($fp, [$p->getIPPort(), $p->getType(), $p->getMisses(), $p->getHits(), $p->getLastUsed(), $p->getRating()], $this->delimiter);
+            fputcsv($fp, [$p->getIP(), $p->getPort(), $p->getType(), $p->getMisses(), $p->getHits(), $p->getLastUsed(), $p->getRating()], $this->delimiter);
 
             $iterator->next();
         }
@@ -66,12 +66,13 @@ class CSVAdapter implements StorageInterface
             while (($data = fgetcsv($handle, 1000, $this->delimiter)) !== false) {
                 $this->proxies->enqueue(
                   new Proxy(
-                    $data[0], //URI
-                    ProxyType::factory(intval($data[1])), // type
-                    $data[2], //misses
-                    $data[3], //hits
-                    $data[4], //last used
-                    $data[5] //rating
+                    $data[0], //IP
+                    $data[1], //Port
+                    ProxyType::factory(intval($data[2])), // type
+                    $data[3], //misses
+                    $data[4], //hits
+                    $data[5], //last used
+                    $data[6] //rating
                   ));
             }
             fclose($handle);

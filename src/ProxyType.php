@@ -7,7 +7,8 @@ abstract class ProxyType
     const Undefinied = 0;
     const HTTP = 1;
     const HTTPS = 2;
-    const SOCKS = 3;
+    const SOCKS4 = 3;
+    const SOCKS5 = 4;
 
     public static function factory($int)
     {

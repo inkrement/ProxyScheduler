@@ -7,7 +7,8 @@ namespace Inkrement\ProxyScheduler;
  */
 class Proxy
 {
-    private $uri;
+    private $ip;
+    private $port;
     private $type;
     private $misses;
     private $hits;
@@ -20,9 +21,10 @@ class Proxy
      */
     private $rating;
 
-    public function __construct($ipport, $type, $misses = 0, $hits = 0, $last_used = 0, $rating = 0)
+    public function __construct($ip, $port, $type, $misses = 0, $hits = 0, $last_used = 0, $rating = 0)
     {
-        $this->ipport = $ipport;
+        $this->ip = $ip;
+        $this->port = $port;
         $this->type = $type;
         $this->misses = intval($misses);
         $this->hits = intval($hits);
@@ -32,12 +34,17 @@ class Proxy
 
     public function getID()
     {
-        return ProxyType::toString($this->type).$this->ipport;
+        return ProxyType::toString($this->type).$this->ip.':'.$this->port;
     }
 
-    public function getIPPort()
+    public function getIP()
     {
-        return $this->ipport;
+        return $this->ip;
+    }
+
+    public function getPort()
+    {
+        return $this->port;
     }
 
     public function getType()
