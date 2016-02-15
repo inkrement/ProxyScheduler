@@ -64,15 +64,17 @@ class CSVAdapter implements StorageInterface
 
         if (($handle = fopen($file_path, 'r')) !== false) {
             while (($data = fgetcsv($handle, 1000, $this->delimiter)) !== false) {
-                assert(count($data) > 2, 'csv: not able detect mandatory columns');
+                $cnum = count($data); //column num
+              assert($cnum > 2, 'csv: not able detect mandatory columns');
 
                 $ip = $data[0];
                 $port = $data[1];
                 $type = ProxyType::factory(intval($data[2]));
-                $misses = $data[3] ?: 0;
-                $hits = $data[4] ?: 0;
-                $last_used = $data[5] ?: 0;
-                $rating = $data[6] ?: 0;
+
+                $misses = ($cnum > 3) ? $data[3] : 0;
+                $hits = ($cnum > 4) ? $data[4] : 0;
+                $last_used = ($cnum > 5) ? $data[5] : 0;
+                $rating = ($cnum > 6) ? $data[6] : 0;
 
                 $this->proxies->enqueue(new Proxy($ip, $port, $type, $misses, $hits, $last_used, $rating));
             }
