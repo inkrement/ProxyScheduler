@@ -1,0 +1,33 @@
+{
+    "name": "inkrement/proxyscheduler",
+    "description": "Schedules Proxy usage (e.g. web scraping)",
+    "type": "library",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Christian Hotz-Behofits",
+            "email": "chris.hotz.behofsits@gmail.com",
+            "homepage": "http://justrocketscience.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "morrisonlevi/ardent": "^0.20.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "4.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Inkrement\\ProxyScheduler\\": "src"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Inkrement\\ProxyScheduler\\Test\\": "tests"
+        }
+    }
+}
