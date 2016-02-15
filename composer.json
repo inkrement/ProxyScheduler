@@ -2,6 +2,7 @@
     "name": "inkrement/proxyscheduler",
     "description": "Schedules Proxy usage (e.g. web scraping)",
     "type": "library",
+    "version":"1.0.0",
     "license": "GPL-3.0",
     "authors": [
         {
