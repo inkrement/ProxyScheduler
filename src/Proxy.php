@@ -20,9 +20,9 @@ class Proxy
      */
     private $rating;
 
-    public function __construct($uri, $type, $misses = 0, $hits = 0, $last_used = 0, $rating = 0)
+    public function __construct($ipport, $type, $misses = 0, $hits = 0, $last_used = 0, $rating = 0)
     {
-        $this->uri = $uri;
+        $this->ipport = $ipport;
         $this->type = $type;
         $this->misses = intval($misses);
         $this->hits = intval($hits);
@@ -32,7 +32,12 @@ class Proxy
 
     public function getID()
     {
-        return $this->uri;
+        return ProxyType::toString($this->type).$this->ipport;
+    }
+
+    public function getIPPort()
+    {
+        return $this->ipport;
     }
 
     public function getType()

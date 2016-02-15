@@ -9,11 +9,14 @@ use Inkrement\ProxyScheduler\SchedulingAlgorithms\RoundRobin as RoundRobinSchedu
 
 class SchedulingTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @group failing
+     */
     public function testRandomScheduling()
     {
         $dao = new CSVAdapter(__DIR__.'/test_oneentry.csv');
         $this->assertEquals($dao->count(), 1);
-        $scheduler = new ProxyScheduler($dao, new RandomScheduling());
+        $scheduler = new ProxyScheduler($dao, new RandomScheduling(), false);
 
         $proxy = $scheduler->getNext();
 
@@ -22,9 +25,6 @@ class SchedulingTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($proxy->getID(), 'http://207.91.10.234:8080');
     }
 
-    /**
-     * @group failing
-     */
     public function testRoundRobinScheduling()
     {
         $dao = new CSVAdapter(__DIR__.'/test_multipleentries.csv');

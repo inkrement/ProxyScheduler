@@ -35,7 +35,7 @@ class CSVAdapter implements StorageInterface
 
         while ($iterator->valid()) {
             $p = $iterator->current();
-            fputcsv($fp, [$p->getID(), $p->getType(), $p->getMisses(), $p->getHits(), $p->getLastUsed(), $p->getRating()], $this->delimiter);
+            fputcsv($fp, [$p->getIPPort(), $p->getType(), $p->getMisses(), $p->getHits(), $p->getLastUsed(), $p->getRating()], $this->delimiter);
 
             $iterator->next();
         }

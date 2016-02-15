@@ -24,4 +24,12 @@ abstract class ProxyType
             return Self::Undefinied;
       }
     }
+
+    public static function toString($value)
+    {
+        $class = new \ReflectionClass(__CLASS__);
+        $constants = array_flip($class->getConstants());
+
+        return strtolower($constants[$value]).'://';
+    }
 }
