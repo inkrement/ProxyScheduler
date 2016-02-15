@@ -12,10 +12,15 @@ Then import the Scheduler and create a new instance:
 use Inkrement\ProxyScheduler\ProxyScheduler;
 use Inkrement\ProxyScheduler\DataAbstraction\CSVAdapter;
 
-$dao = new CSVAdapter(__DIR__.'/test_multipleentries.csv');
+$dao = new CSVAdapter('proxy_list.csv');
 $scheduler = new ProxyScheduler($dao);
 $proxy = $scheduler->getNext();
 ```
+
+## CSV Proxy List Format
+The first 3 fields are mandatory (ip, port and type), the others are optional, but are
+important for some scheduling algorithms (e.g. hit, miss and rating). The default
+delimiter is a semicolon but it can be changed with an additional parameter.
 
 ## Further Information
 Run phpunit tests:
