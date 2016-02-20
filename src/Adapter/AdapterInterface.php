@@ -1,10 +1,10 @@
 <?php
 
-namespace Inkrement\ProxyScheduler\DataAbstraction;
+namespace Inkrement\ProxyScheduler\Adapter;
 
 use Inkrement\ProxyScheduler\Proxy;
 
-interface StorageInterface
+interface AdapterInterface
 {
     /**
      * getProxies.

@@ -3,7 +3,7 @@
 namespace Inkrement\ProxyScheduler;
 
 use InvalidArgumentException;
-use Inkrement\ProxyScheduler\DataAbstraction\StorageInterface;
+use Inkrement\ProxyScheduler\Adapter\AdapterInterface;
 use Inkrement\ProxyScheduler\SchedulingAlgorithms\RoundRobin;
 use Inkrement\ProxyScheduler\SchedulingAlgorithms\SchedulingInterface;
 
@@ -13,7 +13,7 @@ class ProxyScheduler
     private $algorithm;
     private $timetowait;
 
-    public function __construct(StorageInterface $dao, SchedulingInterface $algorithm = null, $timetowait = 60)
+    public function __construct(AdapterInterface $dao, SchedulingInterface $algorithm = null, $timetowait = 60)
     {
         if (is_null($dao)) {
             throw new InvalidArgumentException('no dao provided!');

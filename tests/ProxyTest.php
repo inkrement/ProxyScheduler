@@ -2,7 +2,7 @@
 
 namespace Inkrement\ProxyScheduler\Test;
 
-use Inkrement\ProxyScheduler\DataAbstraction\CSVAdapter;
+use Inkrement\ProxyScheduler\Adapter\CSVAdapter;
 use Inkrement\ProxyScheduler\ProxyScheduler;
 
 class ProxyTest extends \PHPUnit_Framework_TestCase

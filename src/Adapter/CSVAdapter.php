@@ -1,13 +1,13 @@
 <?php
 
-namespace Inkrement\ProxyScheduler\DataAbstraction;
+namespace Inkrement\ProxyScheduler\Adapter;
 
 use InvalidArgumentException;
 use Ardent\Collection\LinkedQueue;
 use Inkrement\ProxyScheduler\Proxy;
 use Inkrement\ProxyScheduler\ProxyType;
 
-class CSVAdapter implements StorageInterface
+class CSVAdapter implements AdapterInterface
 {
     private $file_path;
     private $delimiter;
@@ -69,7 +69,7 @@ class CSVAdapter implements StorageInterface
 
                 $ip = $data[0];
                 $port = $data[1];
-                $type = ProxyType::factory(intval($data[2]));
+                $type = ProxyType::intFactory(intval($data[2]));
 
                 $misses = ($cnum > 3) ? $data[3] : 0;
                 $hits = ($cnum > 4) ? $data[4] : 0;

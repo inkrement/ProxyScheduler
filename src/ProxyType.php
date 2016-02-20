@@ -10,9 +10,9 @@ abstract class ProxyType
     const SOCKS4 = 3;
     const SOCKS5 = 4;
 
-    public static function factory($int)
+    public static function intFactory($int)
     {
-        assert(is_integer($int), 'ProxyType factory expects an integer argument');
+        assert(is_integer($int), 'ProxyType intFactory expects an integer argument');
 
         switch ($int) {
           case 1:
@@ -20,6 +20,28 @@ abstract class ProxyType
           case 2:
             return Self::HTTPS;
           case 3:
+            return Self::SOCKS;
+          default:
+            return Self::Undefinied;
+      }
+    }
+
+    public static function stringFactory($string)
+    {
+        assert(is_string($string), 'ProxyType stringFactory expects an string');
+
+        switch ($string) {
+          case 'HTTP':
+          case 'Http':
+          case 'http':
+            return Self::HTTP;
+          case 'HTTPS':
+          case 'Https':
+          case 'https':
+            return Self::HTTPS;
+          case 'SOCKS':
+          case 'Socks':
+          case 'socks':
             return Self::SOCKS;
           default:
             return Self::Undefinied;

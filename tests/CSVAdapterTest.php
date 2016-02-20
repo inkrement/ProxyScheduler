@@ -2,11 +2,11 @@
 
 namespace Inkrement\ProxyScheduler\Test;
 
-use Inkrement\ProxyScheduler\DataAbstraction\CSVAdapter;
+use Inkrement\ProxyScheduler\Adapter\CSVAdapter;
 
 class AdapterTest extends \PHPUnit_Framework_TestCase
 {
-    public function testProxy()
+    public function testEmptyCSV()
     {
         $empty_file = tempnam(sys_get_temp_dir(), 'scheduler_test');
         $dao = new CSVAdapter($empty_file);

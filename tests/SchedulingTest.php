@@ -2,7 +2,7 @@
 
 namespace Inkrement\ProxyScheduler\Test;
 
-use Inkrement\ProxyScheduler\DataAbstraction\CSVAdapter;
+use Inkrement\ProxyScheduler\Adapter\CSVAdapter;
 use Inkrement\ProxyScheduler\ProxyScheduler;
 use Inkrement\ProxyScheduler\SchedulingAlgorithms\Random as RandomScheduling;
 use Inkrement\ProxyScheduler\SchedulingAlgorithms\RoundRobin as RoundRobinScheduling;
