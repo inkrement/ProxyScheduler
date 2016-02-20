@@ -11,7 +11,7 @@ class GimmeProxyAdapterTest extends \PHPUnit_Framework_TestCase
      */
     public function testNonEmptyReturn()
     {
-        $dao = new GimmeProxyAdapter();
+        $dao = new GimmeProxyAdapter(0);
         $list = $dao->getProxies();
 
         $this->assertNotNull($list);
@@ -24,7 +24,7 @@ class GimmeProxyAdapterTest extends \PHPUnit_Framework_TestCase
      */
     public function testFetchNewProxy()
     {
-        $dao = new GimmeProxyAdapter();
+        $dao = new GimmeProxyAdapter(0);
         //load fist ip
         $dao->getProxies();
 
