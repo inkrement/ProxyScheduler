@@ -46,12 +46,7 @@ class GimmeProxyAdapter implements AdapterInterface
         $raw_return = file_get_contents('http://gimmeproxy.com/api/getProxy');
         $json = json_decode($raw_return, true);
 
-        $ip_raw = explode(':', (is_array($json['ip'])) ? $json['ip'][0] : $json['ip']);
-        $ip = $ip_raw[0];
-        $port = $ip_raw[1];
-        $type = ProxyType::stringFactory($json['type']);
-
-        $this->proxies->enqueue(new Proxy($ip, $port, $type, 0, 0, 0, 0));
+        $this->proxies->enqueue(new Proxy($json['ip'], $json['port'], ProxyType::stringFactory($json['type']), 0, 0, 0, 0));
     }
 
     /**
